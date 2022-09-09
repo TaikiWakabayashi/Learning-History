@@ -197,3 +197,38 @@ console.log(h1.name); // ファンタスティック・フォー
 // クラスメソッド（static）の実行。
 console.log(Hero.isAdult(h1.age)); // true
 console.log(h1.incrementAge());
+// Abstractクラス・メソッド
+class Human {
+}
+/**
+ * シングルトーンパターン
+ *
+ * → 一つだけしかインスタンス化できなくする
+ */
+/**
+ * ① コンストラクタにprivate修飾子をつける。（外部からのインスタンスが不可能に。）
+ *
+ * ② クラス内部でインスタンス化し、インスタンスを返すstaticメソッドを作成。
+ *
+ * ③ メソッドで作成したインスタンスを保持するstaticフィールドを作成。（外部からのアクセスの遮断＋staticからアクセスを可能）。
+ *
+ * ④ メソッドを実行し、instanceを参照し、値がなければ（undefined）なら新しいインスタンスを作成し返す。
+ *   値があれば、既存のインスタンスを返す。
+ *
+ */
+class Single {
+    // ①
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // ②
+    static getInstance() {
+        // ④
+        if (Single.instance) {
+            return Single.instance;
+        }
+        Single.instance = new Single("Watcher", 20000);
+        return Single.instance;
+    }
+}
