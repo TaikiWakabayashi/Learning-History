@@ -74,7 +74,7 @@ class Obj {
     }
 }
 const o1 = new Obj("thor");
-console.log(o1.name + " " + o1.nickName);
-o1.sleeping();
-o1.hello();
-o1.hello("アスガルドの民");
+console.log(o1.name + " " + o1.nickName); // thor undefined
+o1.sleeping(); // 皆さんおやすみ...
+o1.hello(); // hello
+o1.hello("アスガルドの民"); // アスガルドの民
