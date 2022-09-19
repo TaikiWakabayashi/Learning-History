@@ -50,7 +50,7 @@ function returnValue2<T extends { name: string }>(value: T): T {
   let user: string = value.name;
   return value;
 }
-console.log({ name: "US agent" });
+console.log(returnValue2({ name: "US agent" }));
 
 /**
  * keyof演算子

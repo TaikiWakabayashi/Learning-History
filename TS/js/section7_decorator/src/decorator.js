@@ -50,7 +50,7 @@ User = __decorate([
  *
  * @param classTarget
  *
- * returnで無名関数（デコレータ）を返す関数を作成する。
+ * returnでデコレータを返す関数を作成する。
  * →デコレータファクトリー
  */
 function Success(message) {
@@ -142,10 +142,10 @@ Jenny = __decorate([
 // }
 function textDecorate(template, tag) {
     return function (constructor) {
-        const instance = new constructor();
         return class extends constructor {
             constructor(...args) {
                 super(...args);
+                console.log(args);
                 const mountedElement = document.querySelector(tag);
                 const instance = new constructor();
                 if (mountedElement) {
@@ -323,9 +323,9 @@ function enumerable(isEnumerable) {
  */
 function ParameterLogging(target, propertyKey, parameterIndex) {
     console.log("ParameterLogging");
-    console.log(target);
-    console.log(propertyKey);
-    console.log(parameterIndex);
+    console.log(target); // prototype
+    console.log(propertyKey); // greeting
+    console.log(parameterIndex); // 0
 }
 class D {
     constructor(_age) {

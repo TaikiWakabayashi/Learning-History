@@ -42,7 +42,7 @@ class User {
  *
  * @param classTarget
  *
- * returnで無名関数（デコレータ）を返す関数を作成する。
+ * returnでデコレータを返す関数を作成する。
  * →デコレータファクトリー
  */
 function Success(message: string) {
@@ -138,11 +138,10 @@ function textDecorate(template: string, tag: string) {
   return function <T extends { new (...args: any[]): { name: string } }>(
     constructor: T
   ) {
-    const instance = new constructor();
-
     return class extends constructor {
       constructor(...args: any[]) {
         super(...args);
+        console.log(args); // インスタンス時の引数22がそのままくる。super()の中を変えればreturnのクラスも変わる。
         const mountedElement = document.querySelector(tag);
         const instance = new constructor();
         if (mountedElement) {
@@ -337,9 +336,9 @@ function ParameterLogging(
   parameterIndex: number
 ) {
   console.log("ParameterLogging");
-  console.log(target);
-  console.log(propertyKey);
-  console.log(parameterIndex);
+  console.log(target); // prototype
+  console.log(propertyKey); // greeting
+  console.log(parameterIndex); // 0
 }
 class D {
   firstName = "Sam";
